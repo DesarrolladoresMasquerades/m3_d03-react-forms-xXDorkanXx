@@ -15,13 +15,22 @@ function MovieList() {
     setMovies([...movies, newMovie].sort((a, b)=>{return a.title > b.title}))
   }
 
-  function filterMovieList(){}
+  function filterMovieList(selection){
+
+    const filteredMovies = moviesData.filter((movie)=>{
+
+      if(selection === "All") return true;
+      else return movie.title[0].toLowerCase() === selection.toLowerCase();
+    })
+
+    setMovies(filteredMovies);
+  }
 
 
   return (
     <div>
-      <FilterMovies filterMovies={filterMovieList} />
-      <AddMovie addMovie={addMovie} />
+      <FilterMovies filterMovieList={filterMovieList} />
+      <AddMovie moviesData={moviesData} addMovie={addMovie} />
       {movies.map((movie) => {
         return <MovieCard key={movie._id} movie={movie} />;
       })}

@@ -2,7 +2,16 @@ import { useState } from "react";
 
 function FilterMovies(props) {
 
-  
+  const [firstLetter, setSelectData] = useState("All")
+
+  function handleSelect(event){
+    const value = event.target.value;
+    setSelectData(value)
+
+    props.filterMovieList(value) //props.filterMovieList(firstLetter)
+    
+
+  }
 
   return (
     <div className="FilterMovies">

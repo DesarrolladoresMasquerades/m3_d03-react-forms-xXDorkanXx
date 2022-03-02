@@ -13,13 +13,15 @@ function AddMovie(props) {
     const key = event.target.name; //key is same as inputName
     
     let value = "";
-    if(key === "hasOscars"){
-      value = event.target.checked;
-    }else{
-      value = event.target.value;
-    }
+    // if(key === "hasOscars"){
+    //   value = event.target.checked;
+    // }else{
+    //   value = event.target.value;
+    // }
+    if(key === "hasOscars") value = event.target.checked;
+    else value = event.target.value;
 
-    //setFormData(formData => Object.assign(formData, {[key]: value}));
+    //setFormData(formData => Object.assign({}, formData, {[key]: value}));
     setFormData(formData=> ({...formData, [key]: value}));
   }
 
@@ -44,6 +46,8 @@ function AddMovie(props) {
       <h4>Add a Movie</h4>
       <form onSubmit={handleSubmit}>
         <label>Title:</label>
+        <input type="hidden" name="_id" value={"1ae22ff" + props.moviesData.length}/>
+
         <input type="text" name="title" value={formData.title} onChange={handleDataChange}/>
 
         <label>Director:</label>
