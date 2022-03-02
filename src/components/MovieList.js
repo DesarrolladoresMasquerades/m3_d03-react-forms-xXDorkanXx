@@ -12,10 +12,10 @@ function MovieList() {
   function addMovie(newMovie){
     setMoviesData([...moviesData, newMovie])
     // What if I want to sort or filter before setting the state?
-    setMovies([...moviesData, newMovie].sort((a, b)=>{return a.title > b.title}))
+    setMovies([...movies, newMovie].sort((a, b)=>{return a.title > b.title}))
   }
 
-  function filterMovieList
+  function filterMovieList(){}
 
 
   return (
