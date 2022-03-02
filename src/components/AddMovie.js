@@ -30,7 +30,7 @@ function AddMovie(props) {
     //axios.post() or fetch({method: "post"}) goes here
 
     console.log("formData: ", formData);
-    props.addMovie(formData) // We send the sate up to the nearest parent
+    props.addMovie({...formData, _id: "1ae22ff" + (props.moviesData.length - 1)}) // We send the sate up to the nearest parent && _id: Math.random()*100000
 
     setFormData({
       title: "",
@@ -46,8 +46,6 @@ function AddMovie(props) {
       <h4>Add a Movie</h4>
       <form onSubmit={handleSubmit}>
         <label>Title:</label>
-        <input type="hidden" name="_id" value={"1ae22ff" + props.moviesData.length}/>
-
         <input type="text" name="title" value={formData.title} onChange={handleDataChange}/>
 
         <label>Director:</label>
